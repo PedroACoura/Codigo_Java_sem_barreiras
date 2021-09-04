@@ -1,4 +1,15 @@
 package parte01.conteudo02;
+/**
+
+
+ Construa um algoritmo que leia 10 valores inteiros e positivos e:
+
+ Encontre o maior valor
+ Encontre o menor valor
+ Calcule a média dos números lidos
+
+
+ */
 
 import java.util.Scanner; // exporta a biblioteca
 
