@@ -2,9 +2,9 @@ package Projeto_Cartao;
 
 public class ValeAlimentacao extends CartaoDeBeneficiosNewGen{
 
-    //public Integer saldo(){
-    //    return super.saldo();
-   // }
+    /*public Integer saldo(){
+        return super.saldo();
+    }*/
 
     public ValeAlimentacao() {
     }
@@ -21,4 +21,3 @@ public class ValeAlimentacao extends CartaoDeBeneficiosNewGen{
     void naoPasaNoPosto(){}
 
 }
-//

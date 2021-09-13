@@ -1,6 +1,9 @@
 package Projeto_Cartao;
-//
+
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public abstract class CartaoDeBeneficiosNewGen {
     public int saldo=1000;
@@ -24,9 +27,7 @@ public abstract class CartaoDeBeneficiosNewGen {
         return senha;
     }
 
-    public void trasiscao() {
-
-    }
+    public Map<String, Integer> transacoes= new HashMap<String, Integer>();
 
     public void antifraude() {
 
