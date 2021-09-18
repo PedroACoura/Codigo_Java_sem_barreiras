@@ -175,11 +175,11 @@ public class LayoutDoPrograma {
                     opcaoDeExtrato = input.nextInt();
 
                     if (opcaoDeExtrato == 4) {
-                        for (int i = 1; i < 4; i++) {
+                        for (int i = 1; i < 5; i++) {
                             InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, i);
                             cartaoDeBeneficiosAlelo.mostrarExtratoDoCartao(nomeDoBeneficiario, i);
                         }
-                    } else if (opcaoDeExtrato >= 1 && opcaoDeExtrato <= 3) {
+                    } else if (opcaoDeExtrato >= 1 && opcaoDeExtrato <= 4) {
                         InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, opcaoDeExtrato);
                         cartaoDeBeneficiosAlelo.mostrarExtratoDoCartao(nomeDoBeneficiario, opcaoDeExtrato);
                     } else {
@@ -211,7 +211,7 @@ public class LayoutDoPrograma {
                     "%n1 - Alelo Alimentação" +
                     "%n2 - Alelo Refeição" +
                     "%n3 - Alelo Combustível" +
-                    "%n4 - Alelo Multiusuo" +
+                    "%n4 - Alelo Multibenefícios" +
                     "%n9 - Desligar programa" +
                     "%n0 - Retornar ao menu anterior" +
                     "%nOpção escolhida: ", nomeDoBeneficiario);
@@ -223,7 +223,7 @@ public class LayoutDoPrograma {
                 programaParaUsuarios = true;
                 entradaDoPrograma();
 
-            } else if (valeSelecionadoPeloUsuario >= 1 && valeSelecionadoPeloUsuario <= 3) {
+            } else if (valeSelecionadoPeloUsuario >= 1 && valeSelecionadoPeloUsuario <= 4) {
                 InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, valeSelecionadoPeloUsuario);
 
                 System.out.printf("%n%n**************************************************" +

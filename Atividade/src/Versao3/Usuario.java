@@ -41,6 +41,7 @@ public class Usuario {
         listaDeCartoes.add(TiposDeCartaoDeBeneficio.VA.fabricar());
         listaDeCartoes.add(TiposDeCartaoDeBeneficio.VR.fabricar());
         listaDeCartoes.add(TiposDeCartaoDeBeneficio.VC.fabricar());
+        listaDeCartoes.add(TiposDeCartaoDeBeneficio.VM.fabricar());
         System.out.printf("%nCartão de Alelo Alimentação NewGen criado com sucesso..." +
                 "%nCartão de Alelo Refeição NewGen criado com sucesso..." +
                 "%nCartão de Alelo Combustível da Alelo criado com sucesso..." +
