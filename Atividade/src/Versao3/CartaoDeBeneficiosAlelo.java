@@ -15,8 +15,8 @@ public abstract class CartaoDeBeneficiosAlelo {
     public void adicionarNovaTransacao(Double valorASerGastoPeloUsuario, String nomeDoBeneficiario,
                                        Integer valeSelecionadoPeloUsuario, Estabelecimento estabelecimentoUtilizadoPeloPrograma) {
         cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, valeSelecionadoPeloUsuario);
-       //if (sistemaDeSeguranca.cartaoVAEstaSendoUtilizadoEmMercados(cartaoDeBeneficiosAlelo, estabelecimentoUtilizadoPeloPrograma.tipoDeEstabelecimento)){
-        if (sistemaDeSeguranca.cartaoVANaePassaCombustivel(cartaoDeBeneficiosAlelo, estabelecimentoUtilizadoPeloPrograma.tipoDeEstabelecimento)) {
+       if (sistemaDeSeguranca.cartaoVAEstaSendoUtilizadoEmMercados(cartaoDeBeneficiosAlelo, estabelecimentoUtilizadoPeloPrograma.tipoDeEstabelecimento)){
+        //if (sistemaDeSeguranca.cartaoVANaePassaCombustivel(cartaoDeBeneficiosAlelo, estabelecimentoUtilizadoPeloPrograma.tipoDeEstabelecimento)) {
         } else if (sistemaDeSeguranca.cartaoVCEstaSendoUtilizadoEmCombustivel(cartaoDeBeneficiosAlelo, estabelecimentoUtilizadoPeloPrograma.tipoDeEstabelecimento)) {
         } else if (!sistemaDeSeguranca.senhaDoCartaoEstaCorreta(cartaoDeBeneficiosAlelo)) {
         } else if (sistemaDeSeguranca.valorNegativo(valorASerGastoPeloUsuario)) {
