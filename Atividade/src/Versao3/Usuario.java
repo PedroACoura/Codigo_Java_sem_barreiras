@@ -1,6 +1,7 @@
 package Versao3;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,6 +10,8 @@ public class Usuario {
     public static final List<Usuario> dataBaseParaSelecionarUsuarios = new ArrayList<>();
     List<InterfaceCartaoDeBeneficiosAlelo> listaDeCartoes = new ArrayList<>();
     String nomeDoBeneficiario;
+    Date dataNascimento;
+    String cpf;
 
     public Usuario(String nomeDoBeneficiario) {
         this.nomeDoBeneficiario = nomeDoBeneficiario;
@@ -22,6 +25,12 @@ public class Usuario {
         var usuarioNovo = new Usuario(nomeDoBeneficiario);
         dataBaseParaSelecionarUsuarios.add(usuarioNovo);
         return usuarioNovo;
+    }
+    public Usuario (String nomeDoBeneficiario,String cpf, Date dataNascimento){
+        this.nomeDoBeneficiario = nomeDoBeneficiario;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+
     }
 
     public void criarCartoesParaUsuario() {

@@ -31,7 +31,7 @@ public abstract class CartaoDeBeneficiosAlelo {
             cartaoDeBeneficiosNewGen.efetuarTransacao(valorASerDebitado);
             System.out.printf("%nA compra em %s de R$ %.2f foi aprovada com sucesso!" +
                     "%nA compra rendeu um cashback de R$ %.2f que já foi adicionado ao seu saldo." +
-                    "%nO saldo atual do cartão após a compra é de R$ %.2f", estabelecimentoUtilizadoPeloPrograma.razaoSocial, valorASerGastoPeloUsuario, valorASerGastoPeloUsuario * 0.015, cartaoDeBeneficiosNewGen.saldoAtualDoCartao());
+                    "%nO saldo atual do cartão após a compra é de R$ %.2f", estabelecimentoUtilizadoPeloPrograma.razaoSocial, valorASerGastoPeloUsuario, valorASerGastoPeloUsuario * 0.03, cartaoDeBeneficiosNewGen.saldoAtualDoCartao());
 
         } else if (cartaoDeBeneficiosNewGen.nomeDoCartao().equals("VR")) {
             armazenarCompra(valorASerGastoPeloUsuario, estabelecimentoUtilizadoPeloPrograma, nomeDoBeneficiario);
@@ -39,22 +39,23 @@ public abstract class CartaoDeBeneficiosAlelo {
             cartaoDeBeneficiosNewGen.efetuarTransacao(valorASerDebitado);
             System.out.printf("%nA compra em %s de R$ %.2f foi aprovada com sucesso!" +
                     "%nA compra rendeu um cashback de R$ %.2f que já foi adicionado ao seu saldo." +
-                    "%nO saldo atual do cartão após a compra é de R$ %.2f", estabelecimentoUtilizadoPeloPrograma, valorASerGastoPeloUsuario, valorASerGastoPeloUsuario * 0.03, cartaoDeBeneficiosNewGen.saldoAtualDoCartao());
+                    "%nO saldo atual do cartão após a compra é de R$ %.2f", estabelecimentoUtilizadoPeloPrograma, valorASerGastoPeloUsuario, valorASerGastoPeloUsuario * 0.02, cartaoDeBeneficiosNewGen.saldoAtualDoCartao());
 
         } else if (cartaoDeBeneficiosNewGen.nomeDoCartao().equals("VC")) {
             armazenarCompra(valorASerGastoPeloUsuario, estabelecimentoUtilizadoPeloPrograma, nomeDoBeneficiario);
             Double valorASerDebitado = -valorASerGastoPeloUsuario + valorASerGastoPeloUsuario * 0.05 -1;
             cartaoDeBeneficiosNewGen.efetuarTransacao(valorASerDebitado);
             System.out.printf("A compra em %s de R$ %.2f foi aprovada com sucesso! " +
+                    "%nA compra rendeu um cashback de R$ %.2f que já foi adicionado ao seu saldo." +
                     "%nA compra gerou uma taxa de R$ 1.00 que já foi debitado de seu saldo." +
-                    "%nO saldo atual do cartão após a compra é de R$ %.2f", estabelecimentoUtilizadoPeloPrograma.razaoSocial, valorASerGastoPeloUsuario, cartaoDeBeneficiosNewGen.saldoAtualDoCartao());
+                    "%nO saldo atual do cartão após a compra é de R$ %.2f", estabelecimentoUtilizadoPeloPrograma.razaoSocial, valorASerGastoPeloUsuario, valorASerGastoPeloUsuario * 0.05, cartaoDeBeneficiosNewGen.saldoAtualDoCartao());
         } else if (cartaoDeBeneficiosNewGen.nomeDoCartao().equals("VM")) {
             armazenarCompra(valorASerGastoPeloUsuario, estabelecimentoUtilizadoPeloPrograma, nomeDoBeneficiario);
             Double valorASerDebitado = -valorASerGastoPeloUsuario + valorASerGastoPeloUsuario * 0.04;
             cartaoDeBeneficiosNewGen.efetuarTransacao(valorASerDebitado);
             System.out.printf("A compra em %s de R$ %.2f foi aprovada com sucesso! " +
-                    "%nA compra gerou uma taxa de R$ 1.00 que já foi debitado de seu saldo." +
-                    "%nO saldo atual do cartão após a compra é de R$ %.2f", estabelecimentoUtilizadoPeloPrograma.razaoSocial, valorASerGastoPeloUsuario, cartaoDeBeneficiosNewGen.saldoAtualDoCartao());
+                    "%nA compra rendeu um cashback de R$ %.2f que já foi adicionado ao seu saldo." +
+                    "%nO saldo atual do cartão após a compra é de R$ %.2f", estabelecimentoUtilizadoPeloPrograma.razaoSocial, valorASerGastoPeloUsuario, valorASerGastoPeloUsuario * 0.04, cartaoDeBeneficiosNewGen.saldoAtualDoCartao());
         }
 
 

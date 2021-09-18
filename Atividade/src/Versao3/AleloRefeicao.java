@@ -2,7 +2,7 @@ package Versao3;
 
 public class AleloRefeicao extends CartaoDeBeneficiosAlelo implements InterfaceCartaoDeBeneficiosAlelo {
 
-    private final Integer senhaDoCartaoVR = 1234;
+    private final Integer senhaDoCartaoVR = 4567;
     private Double saldoAtualDoCartao = 1000.00;
 
     public Boolean senhaDoCartao(Integer senhaDoCartaoVR) {

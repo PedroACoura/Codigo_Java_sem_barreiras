@@ -3,7 +3,7 @@ package Versao3;
 import java.util.Scanner;
 
 public class Administrador {
-    Integer senha = 321;
+    Integer senha = 4321;
 
     public boolean acessoAdministrador() {
         Scanner senhaAdmin = new Scanner(System.in);

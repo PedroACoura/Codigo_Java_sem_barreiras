@@ -2,7 +2,7 @@ package Versao3;
 
 public class AleloAlimentacao extends CartaoDeBeneficiosAlelo implements InterfaceCartaoDeBeneficiosAlelo {
 
-    private final Integer senhaDoCartaoVA = 123;
+    private final Integer senhaDoCartaoVA = 1234;
     private Double saldoAtualDoCartao = 1000.00;
 
     @Override
