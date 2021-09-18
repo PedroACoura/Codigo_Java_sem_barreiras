@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class SistemaDeSeguranca {
 
-    public boolean cartaoVANaePassaCombustivel(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosNewGen, String estabelecimentoUtilizadoPeloPrograma) {
-        if (cartaoDeBeneficiosNewGen.nomeDoCartao().equals("VA") && estabelecimentoUtilizadoPeloPrograma.equals("Combustível")) {
+    public boolean cartaoVANaePassaCombustivel(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo, String estabelecimentoUtilizadoPeloPrograma) {
+        if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VA") && estabelecimentoUtilizadoPeloPrograma.equals("Combustível")) {
             System.out.printf("%n*** ERRO! ***" +
                     "%nO cartão de vale alimentação não pode ser utilizado em posto de combustível. Tente outro cartão.");
             return true;
@@ -17,8 +17,8 @@ public class SistemaDeSeguranca {
         return false;
     }
 
-    public boolean cartaoVCEstaSendoUtilizadoEmCombustivel(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosNewGen, String estabelecimentoUtilizadoPeloPrograma) {
-        if (cartaoDeBeneficiosNewGen.nomeDoCartao().equals("VC") && !estabelecimentoUtilizadoPeloPrograma.equals("POSTO_COMBUSTIVEL")) {
+    public boolean cartaoVCEstaSendoUtilizadoEmCombustivel(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo, String estabelecimentoUtilizadoPeloPrograma) {
+        if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VC") && !estabelecimentoUtilizadoPeloPrograma.equals("POSTO_COMBUSTIVEL")) {
             System.out.printf("%n*** ERRO ***" +
                     "%nO cartão de combustível pode ser utilizado somente em posto de combustível.");
             return true;
@@ -26,11 +26,11 @@ public class SistemaDeSeguranca {
         return false;
     }
 
-    public boolean senhaDoCartaoEstaCorreta(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosNewGen) {
+    public boolean senhaDoCartaoEstaCorreta(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo) {
         Scanner escanearSenha = new Scanner(System.in);
         System.out.print("Digite a senha do cartão: ");
         Integer senhaDoCartaoDigitaPeloUsuario = escanearSenha.nextInt();
-        if (cartaoDeBeneficiosNewGen.senhaDoCartao(senhaDoCartaoDigitaPeloUsuario)) {
+        if (cartaoDeBeneficiosAlelo.senhaDoCartao(senhaDoCartaoDigitaPeloUsuario)) {
             return true;
         } else {
             System.out.printf("%n*** ERRO! ***" +
@@ -49,8 +49,8 @@ public class SistemaDeSeguranca {
         return false;
     }
 
-    public boolean valorMaiorQueSaldo(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosNewGen, Double valorASerGastoPeloUsuario) {
-        if (valorASerGastoPeloUsuario > cartaoDeBeneficiosNewGen.saldoAtualDoCartao()) {
+    public boolean valorMaiorQueSaldo(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo, Double valorASerGastoPeloUsuario) {
+        if (valorASerGastoPeloUsuario > cartaoDeBeneficiosAlelo.saldoAtualDoCartao()) {
             System.out.printf("%n*** ERRO! ***" +
                     "%nO valor da compra é maior que o disponível em saldo. Procedimento não realizado.");
             return true;
@@ -117,9 +117,9 @@ public class SistemaDeSeguranca {
         return diferencaDeTempoEntreUltimaCompraEAgora(listaParaMostrarOExtrato) < 120;
     }
 
-    public boolean cartaoVCPassaCompraEmMaisDeDoisMinutos(ArrayList<Transacao> listaParaMostrarOExtrato, InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosNewGen) {
+    public boolean cartaoVCPassaCompraEmMaisDeDoisMinutos(ArrayList<Transacao> listaParaMostrarOExtrato, InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo) {
         if (listaParaMostrarOExtrato.size() > 0) {
-            if (cartaoDeBeneficiosNewGen.nomeDoCartao().equals("VC") && segurancaComprasDeMenosDe120Segundos(listaParaMostrarOExtrato)) {
+            if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VC") && segurancaComprasDeMenosDe120Segundos(listaParaMostrarOExtrato)) {
                 System.out.printf("%n*** ERRO! ***" +
                         "%nEspere %d segundos para efetuar uma nova compra no Vale Combustível.", (120 - Math.abs(diferencaDeTempoEntreUltimaCompraEAgora(listaParaMostrarOExtrato))));
                 return true;

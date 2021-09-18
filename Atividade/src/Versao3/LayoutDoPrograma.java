@@ -97,8 +97,8 @@ public class LayoutDoPrograma {
                         if (valorASerAdicionado < 0) {
                             System.out.printf("%nImpossível adicionar um valor negativo.");
                         } else {
-                            InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosNewGen = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, valeSelecionadoPeloUsuario);
-                            cartaoDeBeneficiosNewGen.efetuarTransacao(valorASerAdicionado);
+                            InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, valeSelecionadoPeloUsuario);
+                            cartaoDeBeneficiosAlelo.efetuarTransacao(valorASerAdicionado);
                             System.out.printf("O cartão foi adicionado em R$ %.2f", valorASerAdicionado);
                         }
                         abastecimentoDeCartao = false;
@@ -119,14 +119,14 @@ public class LayoutDoPrograma {
                     if (valeSelecionadoPeloUsuario == 0) {
                         System.out.println("Voltando ao menu inicial...");
                     } else if (valeSelecionadoPeloUsuario >= 1 && valeSelecionadoPeloUsuario <= 4) {
-                        InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosNewGen = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, valeSelecionadoPeloUsuario);
-                        cartaoDeBeneficiosNewGen.mostraSaldoDoCartao(nomeDoBeneficiario, valeSelecionadoPeloUsuario);
+                        InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, valeSelecionadoPeloUsuario);
+                        cartaoDeBeneficiosAlelo.mostraSaldoDoCartao(nomeDoBeneficiario, valeSelecionadoPeloUsuario);
                     } else if (valeSelecionadoPeloUsuario == 5) {
-                        InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosNewGen = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, 1);
-                        cartaoDeBeneficiosNewGen.mostraSaldoDoCartao(nomeDoBeneficiario, 1);
-                        cartaoDeBeneficiosNewGen.mostraSaldoDoCartao(nomeDoBeneficiario, 2);
-                        cartaoDeBeneficiosNewGen.mostraSaldoDoCartao(nomeDoBeneficiario, 3);
-                        cartaoDeBeneficiosNewGen.mostraSaldoDoCartao(nomeDoBeneficiario, 4);
+                        InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, 1);
+                        cartaoDeBeneficiosAlelo.mostraSaldoDoCartao(nomeDoBeneficiario, 1);
+                        cartaoDeBeneficiosAlelo.mostraSaldoDoCartao(nomeDoBeneficiario, 2);
+                        cartaoDeBeneficiosAlelo.mostraSaldoDoCartao(nomeDoBeneficiario, 3);
+                        cartaoDeBeneficiosAlelo.mostraSaldoDoCartao(nomeDoBeneficiario, 4);
                     }
                 } else if (tipoDeTransacao == 4) {
                     int i = 1;
@@ -176,12 +176,12 @@ public class LayoutDoPrograma {
 
                     if (opcaoDeExtrato == 4) {
                         for (int i = 1; i < 4; i++) {
-                            InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosNewGen = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, i);
-                            cartaoDeBeneficiosNewGen.mostrarExtratoDoCartao(nomeDoBeneficiario, i);
+                            InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, i);
+                            cartaoDeBeneficiosAlelo.mostrarExtratoDoCartao(nomeDoBeneficiario, i);
                         }
                     } else if (opcaoDeExtrato >= 1 && opcaoDeExtrato <= 3) {
-                        InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosNewGen = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, opcaoDeExtrato);
-                        cartaoDeBeneficiosNewGen.mostrarExtratoDoCartao(nomeDoBeneficiario, opcaoDeExtrato);
+                        InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, opcaoDeExtrato);
+                        cartaoDeBeneficiosAlelo.mostrarExtratoDoCartao(nomeDoBeneficiario, opcaoDeExtrato);
                     } else {
                         System.out.printf("%nOpção inválida.");
                     }
@@ -224,7 +224,7 @@ public class LayoutDoPrograma {
                 entradaDoPrograma();
 
             } else if (valeSelecionadoPeloUsuario >= 1 && valeSelecionadoPeloUsuario <= 3) {
-                InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosNewGen = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, valeSelecionadoPeloUsuario);
+                InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, valeSelecionadoPeloUsuario);
 
                 System.out.printf("%n%n**************************************************" +
                         "%nEscolha o estabelecimento onde ocorrerá a compra%n");
@@ -238,7 +238,7 @@ public class LayoutDoPrograma {
                     System.out.print("Digite o valor a ser gasto: ");
                     Double valorASerGastoPeloUsuario = input.nextDouble();
 
-                    cartaoDeBeneficiosNewGen.adicionarNovaTransacao(valorASerGastoPeloUsuario, nomeDoBeneficiario, valeSelecionadoPeloUsuario,
+                    cartaoDeBeneficiosAlelo.adicionarNovaTransacao(valorASerGastoPeloUsuario, nomeDoBeneficiario, valeSelecionadoPeloUsuario,
                             Estabelecimentos.estabelecimentos.get(opcaoDeEstabelecimentoEscolhidaPeloUsuario - 1));
                 } else {
                     System.out.printf("%n*** ERRO! ***" +

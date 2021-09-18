@@ -10,52 +10,52 @@ public abstract class CartaoDeBeneficiosAlelo {
     final ArrayList<Transacao> listaParaMostrarOExtrato = new ArrayList<>();
     public LocalDateTime validadeDoCartao = LocalDateTime.now().plus(5, ChronoUnit.DAYS);
 
-    InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosNewGen;
+    InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo;
 
     public void adicionarNovaTransacao(Double valorASerGastoPeloUsuario, String nomeDoBeneficiario,
                                        Integer valeSelecionadoPeloUsuario, Estabelecimento estabelecimentoUtilizadoPeloPrograma) {
-        cartaoDeBeneficiosNewGen = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, valeSelecionadoPeloUsuario);
-
-        if (sistemaDeSeguranca.cartaoVANaePassaCombustivel(cartaoDeBeneficiosNewGen, estabelecimentoUtilizadoPeloPrograma.tipoDeEstabelecimento)) {
-        } else if (sistemaDeSeguranca.cartaoVCEstaSendoUtilizadoEmCombustivel(cartaoDeBeneficiosNewGen, estabelecimentoUtilizadoPeloPrograma.tipoDeEstabelecimento)) {
-        } else if (!sistemaDeSeguranca.senhaDoCartaoEstaCorreta(cartaoDeBeneficiosNewGen)) {
+        cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, valeSelecionadoPeloUsuario);
+       //if (sistemaDeSeguranca.cartaoVAEstaSendoUtilizadoEmMercados(cartaoDeBeneficiosAlelo, estabelecimentoUtilizadoPeloPrograma.tipoDeEstabelecimento)){
+        if (sistemaDeSeguranca.cartaoVANaePassaCombustivel(cartaoDeBeneficiosAlelo, estabelecimentoUtilizadoPeloPrograma.tipoDeEstabelecimento)) {
+        } else if (sistemaDeSeguranca.cartaoVCEstaSendoUtilizadoEmCombustivel(cartaoDeBeneficiosAlelo, estabelecimentoUtilizadoPeloPrograma.tipoDeEstabelecimento)) {
+        } else if (!sistemaDeSeguranca.senhaDoCartaoEstaCorreta(cartaoDeBeneficiosAlelo)) {
         } else if (sistemaDeSeguranca.valorNegativo(valorASerGastoPeloUsuario)) {
-        } else if (sistemaDeSeguranca.valorMaiorQueSaldo(cartaoDeBeneficiosNewGen, valorASerGastoPeloUsuario)) {
+        } else if (sistemaDeSeguranca.valorMaiorQueSaldo(cartaoDeBeneficiosAlelo, valorASerGastoPeloUsuario)) {
         } else if (sistemaDeSeguranca.sistemaAntiFraude1(listaParaMostrarOExtrato, estabelecimentoUtilizadoPeloPrograma.razaoSocial, valorASerGastoPeloUsuario)) {
         } else if (sistemaDeSeguranca.sistemaAntiFraude2(listaParaMostrarOExtrato)) {
-        } else if (sistemaDeSeguranca.cartaoVCPassaCompraEmMaisDeDoisMinutos(listaParaMostrarOExtrato, cartaoDeBeneficiosNewGen)) {
+        } else if (sistemaDeSeguranca.cartaoVCPassaCompraEmMaisDeDoisMinutos(listaParaMostrarOExtrato, cartaoDeBeneficiosAlelo)) {
         } else if (sistemaDeSeguranca.cartaoEstaNaValidade(validadeDoCartao)) {
-        } else if (cartaoDeBeneficiosNewGen.nomeDoCartao().equals("VA")) {
+        } else if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VA")) {
             armazenarCompra(valorASerGastoPeloUsuario, estabelecimentoUtilizadoPeloPrograma, nomeDoBeneficiario);
             Double valorASerDebitado = -valorASerGastoPeloUsuario + valorASerGastoPeloUsuario * 0.03;
-            cartaoDeBeneficiosNewGen.efetuarTransacao(valorASerDebitado);
+            cartaoDeBeneficiosAlelo.efetuarTransacao(valorASerDebitado);
             System.out.printf("%nA compra em %s de R$ %.2f foi aprovada com sucesso!" +
                     "%nA compra rendeu um cashback de R$ %.2f que já foi adicionado ao seu saldo." +
-                    "%nO saldo atual do cartão após a compra é de R$ %.2f", estabelecimentoUtilizadoPeloPrograma.razaoSocial, valorASerGastoPeloUsuario, valorASerGastoPeloUsuario * 0.03, cartaoDeBeneficiosNewGen.saldoAtualDoCartao());
+                    "%nO saldo atual do cartão após a compra é de R$ %.2f", estabelecimentoUtilizadoPeloPrograma.razaoSocial, valorASerGastoPeloUsuario, valorASerGastoPeloUsuario * 0.03, cartaoDeBeneficiosAlelo.saldoAtualDoCartao());
 
-        } else if (cartaoDeBeneficiosNewGen.nomeDoCartao().equals("VR")) {
+        } else if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VR")) {
             armazenarCompra(valorASerGastoPeloUsuario, estabelecimentoUtilizadoPeloPrograma, nomeDoBeneficiario);
             Double valorASerDebitado = -valorASerGastoPeloUsuario + valorASerGastoPeloUsuario * 0.02;
-            cartaoDeBeneficiosNewGen.efetuarTransacao(valorASerDebitado);
+            cartaoDeBeneficiosAlelo.efetuarTransacao(valorASerDebitado);
             System.out.printf("%nA compra em %s de R$ %.2f foi aprovada com sucesso!" +
                     "%nA compra rendeu um cashback de R$ %.2f que já foi adicionado ao seu saldo." +
-                    "%nO saldo atual do cartão após a compra é de R$ %.2f", estabelecimentoUtilizadoPeloPrograma, valorASerGastoPeloUsuario, valorASerGastoPeloUsuario * 0.02, cartaoDeBeneficiosNewGen.saldoAtualDoCartao());
+                    "%nO saldo atual do cartão após a compra é de R$ %.2f", estabelecimentoUtilizadoPeloPrograma, valorASerGastoPeloUsuario, valorASerGastoPeloUsuario * 0.02, cartaoDeBeneficiosAlelo.saldoAtualDoCartao());
 
-        } else if (cartaoDeBeneficiosNewGen.nomeDoCartao().equals("VC")) {
+        } else if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VC")) {
             armazenarCompra(valorASerGastoPeloUsuario, estabelecimentoUtilizadoPeloPrograma, nomeDoBeneficiario);
             Double valorASerDebitado = -valorASerGastoPeloUsuario + valorASerGastoPeloUsuario * 0.05 -1;
-            cartaoDeBeneficiosNewGen.efetuarTransacao(valorASerDebitado);
+            cartaoDeBeneficiosAlelo.efetuarTransacao(valorASerDebitado);
             System.out.printf("A compra em %s de R$ %.2f foi aprovada com sucesso! " +
                     "%nA compra rendeu um cashback de R$ %.2f que já foi adicionado ao seu saldo." +
                     "%nA compra gerou uma taxa de R$ 1.00 que já foi debitado de seu saldo." +
-                    "%nO saldo atual do cartão após a compra é de R$ %.2f", estabelecimentoUtilizadoPeloPrograma.razaoSocial, valorASerGastoPeloUsuario, valorASerGastoPeloUsuario * 0.05, cartaoDeBeneficiosNewGen.saldoAtualDoCartao());
-        } else if (cartaoDeBeneficiosNewGen.nomeDoCartao().equals("VM")) {
+                    "%nO saldo atual do cartão após a compra é de R$ %.2f", estabelecimentoUtilizadoPeloPrograma.razaoSocial, valorASerGastoPeloUsuario, valorASerGastoPeloUsuario * 0.05, cartaoDeBeneficiosAlelo.saldoAtualDoCartao());
+        } else if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VM")) {
             armazenarCompra(valorASerGastoPeloUsuario, estabelecimentoUtilizadoPeloPrograma, nomeDoBeneficiario);
             Double valorASerDebitado = -valorASerGastoPeloUsuario + valorASerGastoPeloUsuario * 0.04;
-            cartaoDeBeneficiosNewGen.efetuarTransacao(valorASerDebitado);
+            cartaoDeBeneficiosAlelo.efetuarTransacao(valorASerDebitado);
             System.out.printf("A compra em %s de R$ %.2f foi aprovada com sucesso! " +
                     "%nA compra rendeu um cashback de R$ %.2f que já foi adicionado ao seu saldo." +
-                    "%nO saldo atual do cartão após a compra é de R$ %.2f", estabelecimentoUtilizadoPeloPrograma.razaoSocial, valorASerGastoPeloUsuario, valorASerGastoPeloUsuario * 0.04, cartaoDeBeneficiosNewGen.saldoAtualDoCartao());
+                    "%nO saldo atual do cartão após a compra é de R$ %.2f", estabelecimentoUtilizadoPeloPrograma.razaoSocial, valorASerGastoPeloUsuario, valorASerGastoPeloUsuario * 0.04, cartaoDeBeneficiosAlelo.saldoAtualDoCartao());
         }
 
 
@@ -67,9 +67,9 @@ public abstract class CartaoDeBeneficiosAlelo {
     }
 
     public void mostrarExtratoDoCartao(String nomeDoBeneficiario, Integer valeSelecionadoPeloUsuario) {
-        cartaoDeBeneficiosNewGen = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, valeSelecionadoPeloUsuario);
+        cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, valeSelecionadoPeloUsuario);
         System.out.printf("%n######################### EXTRATO DO CARTÃO #########################" +
-                "%n############################# CARTÃO %s #############################", cartaoDeBeneficiosNewGen.nomeDoCartao());
+                "%n############################# CARTÃO %s #############################", cartaoDeBeneficiosAlelo.nomeDoCartao());
 
         if (listaParaMostrarOExtrato.size() == 0) {
             System.out.printf("%nAinda não há compras efetuadas neste cartão.%n");
@@ -82,7 +82,7 @@ public abstract class CartaoDeBeneficiosAlelo {
     }
 
     public void mostraSaldoDoCartao(String nomeDoBeneficiario, Integer valeSelecionadoPeloUsuario) {
-        cartaoDeBeneficiosNewGen = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, valeSelecionadoPeloUsuario);
-        System.out.printf("%n* O saldo do cartão %s é R$ %.2f", cartaoDeBeneficiosNewGen.nomeDoCartao(), cartaoDeBeneficiosNewGen.saldoAtualDoCartao());
+        cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, valeSelecionadoPeloUsuario);
+        System.out.printf("%n* O saldo do cartão %s é R$ %.2f", cartaoDeBeneficiosAlelo.nomeDoCartao(), cartaoDeBeneficiosAlelo.saldoAtualDoCartao());
     }
 }
