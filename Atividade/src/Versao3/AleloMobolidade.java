@@ -1,3 +1,5 @@
+package Versao3;
+
 public class AleloMobolidade extends CartaoDeBeneficiosAlelo implements InterfaceCartaoDeBeneficiosAlelo {
 
     private final Integer senhaDoCartaoVC = 12345;

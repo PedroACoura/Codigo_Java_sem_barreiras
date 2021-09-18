@@ -1,3 +1,5 @@
+package Versao3;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;

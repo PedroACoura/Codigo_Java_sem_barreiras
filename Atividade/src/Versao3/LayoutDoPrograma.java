@@ -1,3 +1,5 @@
+package Versao3;
+
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -65,7 +67,7 @@ public class LayoutDoPrograma {
                     usufruirDoPrograma(nomeDoBeneficiario);
                 } else if (tipoDeTransacao == 2) {
                     if (administrador.acessoAdministrador()) {
-                        System.out.printf("%nOlá, Administrador" +
+                        System.out.printf("%nOlá, Teste.Administrador" +
                                 "%nEscolha o cartao que você quer colocar saldo" +
                                 "%n1 - Alelo Alimentação" +
                                 "%n2 - Alelo Refeição" +

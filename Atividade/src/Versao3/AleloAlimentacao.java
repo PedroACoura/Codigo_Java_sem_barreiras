@@ -1,3 +1,5 @@
+package Versao3;
+
 public class AleloAlimentacao extends CartaoDeBeneficiosAlelo implements InterfaceCartaoDeBeneficiosAlelo {
 
     private final Integer senhaDoCartaoVA = 123;

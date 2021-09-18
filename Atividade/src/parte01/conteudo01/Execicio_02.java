@@ -5,7 +5,7 @@ package parte01.conteudo01;
  Vamos aprender a recuperar valores nos nossos programas Java?
 
  import java.util.Scanner;
- class Main
+ class Teste.Main
  {
  public static void main(String args[])
  {

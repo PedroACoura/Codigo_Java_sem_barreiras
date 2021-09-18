@@ -14,7 +14,7 @@ public class Main {
         transacoes = new ArrayList<Transacoes>();
         extratos = new HashMap<Transacoes, Integer>();
         cartao = new HashMap<Usuario, Integer>();
-        //Main.menu();
+        //Teste.Main.menu();
         Main.tese();
         Main.cadastroEstabelecineto();
         Main.cadastroUsuário();
@@ -59,11 +59,11 @@ public class Main {
 
         int opcao = 0;
         try {
-            opcao = Integer.parseInt(Main.teclado.nextLine());
+            opcao = Integer.parseInt(Teste.Main.teclado.nextLine());
         } catch (InputMismatchException e) {
-            Main.menu();
+            Teste.Main.menu();
         } catch (NumberFormatException f) {
-            Main.menu();
+            Teste.Main.menu();
         }
         switch (opcao) {
                 case 1:
@@ -92,7 +92,7 @@ public class Main {
         }
     }*/
 /*
-public class Main {
+public class Teste.Main {
 
     private static Scanner teclado = new Scanner(System.in);
     private static ArrayList<Transacoes> produtos;

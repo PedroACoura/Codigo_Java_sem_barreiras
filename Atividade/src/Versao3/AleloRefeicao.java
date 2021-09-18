@@ -1,3 +1,5 @@
+package Versao3;
+
 public class AleloRefeicao extends CartaoDeBeneficiosAlelo implements InterfaceCartaoDeBeneficiosAlelo {
 
     private final Integer senhaDoCartaoVR = 1234;

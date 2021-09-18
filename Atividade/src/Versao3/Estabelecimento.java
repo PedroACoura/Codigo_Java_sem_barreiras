@@ -1,3 +1,5 @@
+package Versao3;
+
 public class Estabelecimento {
 
     public String razaoSocial;
@@ -15,7 +17,7 @@ public class Estabelecimento {
 
     @Override
     public String toString() {
-        return "Estabelecimento: " + razaoSocial;
+        return "Teste.Estabelecimento: " + razaoSocial;
     }
 
     public Integer identificadorDoEstabelecimento() {

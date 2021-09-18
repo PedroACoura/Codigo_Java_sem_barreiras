@@ -1,3 +1,5 @@
+package Versao3;
+
 public interface InterfaceCartaoDeBeneficiosAlelo {
 
     void adicionarNovaTransacao(Double valorASerGastoPeloUsuario, String nomeDoBeneficiario,

@@ -1,3 +1,5 @@
+package Versao3;
+
 public enum TiposDeCartaoDeBeneficio {
     VA {
         @Override

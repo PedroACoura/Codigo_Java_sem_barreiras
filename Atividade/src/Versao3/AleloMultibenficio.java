@@ -1,3 +1,5 @@
+package Versao3;
+
 public class AleloMultibenficio extends CartaoDeBeneficiosAlelo implements InterfaceCartaoDeBeneficiosAlelo {
 
 

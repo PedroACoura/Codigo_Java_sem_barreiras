@@ -48,11 +48,11 @@ public class Estabelecimento {
 
     @Override
     public String toString() {
-        return "Estabelecimento{" +
+        return "Teste.Estabelecimento{" +
                 "nome do estabalecimento='" + nomeDoEstabelecimento + '\'' +
                 ", número de indentificador =" + identificadorDoEstabelecimento +
                 ", localizado em ='" + localizacaoDoEstabelecimento + '\'' +
-                ",  no Estabelecimento='" + tipoDeEstabelecimento + '\'' +
+                ",  no Teste.Estabelecimento='" + tipoDeEstabelecimento + '\'' +
                 '}';
     }
 }
