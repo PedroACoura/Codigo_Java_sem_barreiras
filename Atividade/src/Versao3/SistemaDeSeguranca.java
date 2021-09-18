@@ -17,17 +17,27 @@ public class SistemaDeSeguranca {
         return false;
     }
 
-//    public boolean cartaoVANaePassaCombustivel(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo, String estabelecimentoUtilizadoPeloPrograma) {
-//        if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VA") && estabelecimentoUtilizadoPeloPrograma.equals("Combustível")) {
-//            System.out.printf("%n*** ERRO! ***" +
-//                    "%nO cartão de vale alimentação não pode ser utilizado em posto de combustível. Tente outro cartão.");
-//            return true;
-//        }
-//        return false;
-//    }
 
     public boolean cartaoVCEstaSendoUtilizadoEmCombustivel(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo, String estabelecimentoUtilizadoPeloPrograma) {
         if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VC") && !estabelecimentoUtilizadoPeloPrograma.equals("POSTO_COMBUSTIVEL")) {
+            System.out.printf("%n*** ERRO ***" +
+                    "%nO cartão de combustível pode ser utilizado somente em posto de combustível.");
+            return true;
+        }
+        return false;
+    }
+    public boolean cartaoVREstaSendoUtilizadoEmRestourante(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo, String estabelecimentoUtilizadoPeloPrograma) {
+        if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VR") && !estabelecimentoUtilizadoPeloPrograma.equals("RESTOURANTE")) {
+            System.out.printf("%n*** ERRO! ***" +
+                    "%nO Alelo Alimentação pode ser utilizado somente em mercado.");
+            return true;
+        }
+        return false;
+    }
+
+
+    public boolean cartaoVMEstaSendoUtilizadoEmFarmacia(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo, String estabelecimentoUtilizadoPeloPrograma) {
+        if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VM") && !estabelecimentoUtilizadoPeloPrograma.equals("FARMACIA")) {
             System.out.printf("%n*** ERRO ***" +
                     "%nO cartão de combustível pode ser utilizado somente em posto de combustível.");
             return true;

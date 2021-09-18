@@ -15,8 +15,9 @@ public abstract class CartaoDeBeneficiosAlelo {
     public void adicionarNovaTransacao(Double valorASerGastoPeloUsuario, String nomeDoBeneficiario,
                                        Integer valeSelecionadoPeloUsuario, Estabelecimento estabelecimentoUtilizadoPeloPrograma) {
         cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, valeSelecionadoPeloUsuario);
-       if (sistemaDeSeguranca.cartaoVAEstaSendoUtilizadoEmMercados(cartaoDeBeneficiosAlelo, estabelecimentoUtilizadoPeloPrograma.tipoDeEstabelecimento)){
-        //if (sistemaDeSeguranca.cartaoVANaePassaCombustivel(cartaoDeBeneficiosAlelo, estabelecimentoUtilizadoPeloPrograma.tipoDeEstabelecimento)) {
+        if (sistemaDeSeguranca.cartaoVAEstaSendoUtilizadoEmMercados(cartaoDeBeneficiosAlelo, estabelecimentoUtilizadoPeloPrograma.tipoDeEstabelecimento)) {
+        } else if (sistemaDeSeguranca.cartaoVREstaSendoUtilizadoEmRestourante(cartaoDeBeneficiosAlelo, estabelecimentoUtilizadoPeloPrograma.tipoDeEstabelecimento)) {
+        } else if (sistemaDeSeguranca.cartaoVMEstaSendoUtilizadoEmFarmacia(cartaoDeBeneficiosAlelo, estabelecimentoUtilizadoPeloPrograma.tipoDeEstabelecimento)) {
         } else if (sistemaDeSeguranca.cartaoVCEstaSendoUtilizadoEmCombustivel(cartaoDeBeneficiosAlelo, estabelecimentoUtilizadoPeloPrograma.tipoDeEstabelecimento)) {
         } else if (!sistemaDeSeguranca.senhaDoCartaoEstaCorreta(cartaoDeBeneficiosAlelo)) {
         } else if (sistemaDeSeguranca.valorNegativo(valorASerGastoPeloUsuario)) {
@@ -43,7 +44,7 @@ public abstract class CartaoDeBeneficiosAlelo {
 
         } else if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VC")) {
             armazenarCompra(valorASerGastoPeloUsuario, estabelecimentoUtilizadoPeloPrograma, nomeDoBeneficiario);
-            Double valorASerDebitado = -valorASerGastoPeloUsuario + valorASerGastoPeloUsuario * 0.05 -1;
+            Double valorASerDebitado = -valorASerGastoPeloUsuario + valorASerGastoPeloUsuario * 0.05 - 1;
             cartaoDeBeneficiosAlelo.efetuarTransacao(valorASerDebitado);
             System.out.printf("A compra em %s de R$ %.2f foi aprovada com sucesso! " +
                     "%nA compra rendeu um cashback de R$ %.2f que já foi adicionado ao seu saldo." +
