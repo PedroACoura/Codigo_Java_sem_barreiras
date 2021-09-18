@@ -110,7 +110,7 @@ public class SistemaDeSeguranca {
     public boolean sistemaAntiFraude1(ArrayList<Transacao> listaParaMostrarOExtrato, String nomeDoEstabelecimento, Double valorASerGastoPeloUsuario) {
         if (segurancaComprasDeMenosDe10Segundos(listaParaMostrarOExtrato) &&
                 //compraNoMesmoEstabelecimento(listaParaMostrarOExtrato, nomeDoEstabelecimento) &&
-                noMesmoValor(listaParaMostrarOExtrato, valorASerGastoPeloUsuario)) {
+                noMesmoValor(listaParaMostrarOExtrato, valorASerGastoPeloUsuario) ) {
             System.out.printf("%n*** ERRO! ***" +
                     "%nTransação não realizada. Espere %d segundos para efetuar esta compra.", (10 - diferencaDeTempoEntreUltimaCompraEAgora(listaParaMostrarOExtrato)));
             return true;
@@ -152,6 +152,32 @@ public class SistemaDeSeguranca {
         if (validadeDoCartao.compareTo(LocalDateTime.now()) < 0) {
             System.out.println("*** ERRO! ***");
             System.out.println("O seu cartão está vencido há " + ChronoUnit.DAYS.between(validadeDoCartao, LocalDateTime.now()) + " dia(s).");
+            return true;
+        }
+        return false;
+    }
+
+//    public boolean valorMaiorQue299(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo, Double valorASerGastoPeloUsuario) {
+//        if (valorASerGastoPeloUsuario > cartaoDeBeneficiosAlelo.saldoAtualDoCartao()) {
+//            System.out.printf("%n*** ERRO! ***" +
+//                    "%nO valor da compra é maior que o disponível em saldo. Procedimento não realizado.");
+//            return true;
+//        }
+//        return false;
+//    }
+
+    public static boolean limiteDoCartaoAleloRefeicao(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo, Double valorASerGastoPeloUsuario) {
+        if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VR") && valorASerGastoPeloUsuario > 299) {
+            System.out.printf("%n*** ERRO! ***" +
+                    "%nO Alelo Refeição não pode passar o valor maior que R$299.");
+            return true;
+        }
+        return false;
+    }
+    public static boolean limiteDoCartaoAleloAlimentacao(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo, Double valorASerGastoPeloUsuario) {
+        if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VA") && valorASerGastoPeloUsuario>999) {
+            System.out.printf("%n*** ERRO! ***" +
+                    "%nO Alelo Alimentação pode ser utilizado somente em mercado.");
             return true;
         }
         return false;

@@ -22,9 +22,12 @@ public abstract class CartaoDeBeneficiosAlelo {
         } else if (!sistemaDeSeguranca.senhaDoCartaoEstaCorreta(cartaoDeBeneficiosAlelo)) {
         } else if (sistemaDeSeguranca.valorNegativo(valorASerGastoPeloUsuario)) {
         } else if (sistemaDeSeguranca.valorMaiorQueSaldo(cartaoDeBeneficiosAlelo, valorASerGastoPeloUsuario)) {
+        }else if (SistemaDeSeguranca.limiteDoCartaoAleloRefeicao(cartaoDeBeneficiosAlelo, valorASerGastoPeloUsuario)){
+        }else if (SistemaDeSeguranca.limiteDoCartaoAleloAlimentacao(cartaoDeBeneficiosAlelo, valorASerGastoPeloUsuario)){
+
         } else if (sistemaDeSeguranca.sistemaAntiFraude1(listaParaMostrarOExtrato, estabelecimentoUtilizadoPeloPrograma.razaoSocial, valorASerGastoPeloUsuario)) {
         } else if (sistemaDeSeguranca.sistemaAntiFraude2(listaParaMostrarOExtrato)) {
-        } else if (sistemaDeSeguranca.cartaoVCPassaCompraEmMaisDeDoisMinutos(listaParaMostrarOExtrato, cartaoDeBeneficiosAlelo)) {
+        //} else if (sistemaDeSeguranca.cartaoVCPassaCompraEmMaisDeDoisMinutos(listaParaMostrarOExtrato, cartaoDeBeneficiosAlelo)) {
         } else if (sistemaDeSeguranca.cartaoEstaNaValidade(validadeDoCartao)) {
         } else if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VA")) {
             armazenarCompra(valorASerGastoPeloUsuario, estabelecimentoUtilizadoPeloPrograma, nomeDoBeneficiario);
