@@ -72,7 +72,7 @@ public class LayoutDoPrograma {
                                 "%n1 - Alelo Alimentação" +
                                 "%n2 - Alelo Refeição" +
                                 "%n3 - Alelo Combustível" +
-                                "%n4 - Alelo Multiusuo" +
+                                "%n4 - Alelo Multibeneficios" +
                                 "%n0 - Voltar para o menu anterior" +
                                 "%nOpção escolhida: ");
                         valeSelecionadoPeloUsuario = input.nextInt();
@@ -110,7 +110,7 @@ public class LayoutDoPrograma {
                             "%n1 - Alelo Alimentação" +
                             "%n2 - Alelo Refeição" +
                             "%n3 - Alelo Combustível" +
-                            "%n4 - Alelo Multiusuo" +
+                            "%n4 - Alelo Multibeneficios" +
                             "%n5 - Todos os cartões" +
                             "%n0 - Voltar para o menu anterior" +
                             "%nOpção escolhida: ", nomeDoBeneficiario);
@@ -168,7 +168,7 @@ public class LayoutDoPrograma {
                             "%n1 - Alelo Alimentação" +
                             "%n2 - Alelo Refeição" +
                             "%n3 - Alelo Combustível" +
-                            "%n4 - Alelo Multiusuo" +
+                            "%n4 - Alelo  Multibeneficios" +
                             "%n4 - Todos os cartões" +
                             "%n0 - Voltar para o menu anterior" +
                             "%nOpção escolhida: ");
