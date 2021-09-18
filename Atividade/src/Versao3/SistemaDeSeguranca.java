@@ -87,8 +87,8 @@ public class SistemaDeSeguranca {
         return 120;
     }
 
-    public boolean segurancaComprasDeMenosDe30Segundos(ArrayList<Transacao> listaParaMostrarOExtrato) {
-        return diferencaDeTempoEntreUltimaCompraEAgora(listaParaMostrarOExtrato) < 30;
+    public boolean segurancaComprasDeMenosDe10Segundos(ArrayList<Transacao> listaParaMostrarOExtrato) {
+        return diferencaDeTempoEntreUltimaCompraEAgora(listaParaMostrarOExtrato) < 10;
     }
 
     public boolean compraNoMesmoEstabelecimento(ArrayList<Transacao> listaParaMostrarOExtrato, String nomeDoEstabelecimento) {
@@ -108,11 +108,11 @@ public class SistemaDeSeguranca {
     }
 
     public boolean sistemaAntiFraude1(ArrayList<Transacao> listaParaMostrarOExtrato, String nomeDoEstabelecimento, Double valorASerGastoPeloUsuario) {
-        if (segurancaComprasDeMenosDe30Segundos(listaParaMostrarOExtrato) &&
-                compraNoMesmoEstabelecimento(listaParaMostrarOExtrato, nomeDoEstabelecimento) &&
+        if (segurancaComprasDeMenosDe10Segundos(listaParaMostrarOExtrato) &&
+                //compraNoMesmoEstabelecimento(listaParaMostrarOExtrato, nomeDoEstabelecimento) &&
                 noMesmoValor(listaParaMostrarOExtrato, valorASerGastoPeloUsuario)) {
             System.out.printf("%n*** ERRO! ***" +
-                    "%nTransação não realizada. Espere %d segundos para efetuar esta compra.", (30 - diferencaDeTempoEntreUltimaCompraEAgora(listaParaMostrarOExtrato)));
+                    "%nTransação não realizada. Espere %d segundos para efetuar esta compra.", (10 - diferencaDeTempoEntreUltimaCompraEAgora(listaParaMostrarOExtrato)));
             return true;
         }
         return false;
@@ -122,9 +122,9 @@ public class SistemaDeSeguranca {
         if (listaParaMostrarOExtrato.size() > 1) {
             int indiceDoPenultimoElemento = listaParaMostrarOExtrato.size() - 2;
             Duration diferencaDeTempo = Duration.between(LocalDateTime.now(), listaParaMostrarOExtrato.get(indiceDoPenultimoElemento).horarioDaTransacao);
-            if (Math.abs(diferencaDeTempo.toSeconds()) < 60) {
+            if (Math.abs(diferencaDeTempo.toSeconds()) < 30) {
                 System.out.printf("%n*** ERRO! ***" +
-                        "%nTransação não realizada. Espere %d segundos para efetuar esta compra.", (60 - Math.abs(diferencaDeTempo.toSeconds())));
+                        "%nTransação não realizada. Espere %d segundos para efetuar esta compra.", (30 - Math.abs(diferencaDeTempo.toSeconds())));
                 return true;
             }
             return false;
@@ -132,21 +132,21 @@ public class SistemaDeSeguranca {
         return false;
     }
 
-    public boolean segurancaComprasDeMenosDe120Segundos(ArrayList<Transacao> listaParaMostrarOExtrato) {
-        return diferencaDeTempoEntreUltimaCompraEAgora(listaParaMostrarOExtrato) < 120;
-    }
+//    public boolean segurancaComprasDeMenosDe120Segundos(ArrayList<Transacao> listaParaMostrarOExtrato) {
+//        return diferencaDeTempoEntreUltimaCompraEAgora(listaParaMostrarOExtrato) < 120;
+//    }
 
-    public boolean cartaoVCPassaCompraEmMaisDeDoisMinutos(ArrayList<Transacao> listaParaMostrarOExtrato, InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo) {
-        if (listaParaMostrarOExtrato.size() > 0) {
-            if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VC") && segurancaComprasDeMenosDe120Segundos(listaParaMostrarOExtrato)) {
-                System.out.printf("%n*** ERRO! ***" +
-                        "%nEspere %d segundos para efetuar uma nova compra no Vale Combustível.", (120 - Math.abs(diferencaDeTempoEntreUltimaCompraEAgora(listaParaMostrarOExtrato))));
-                return true;
-            }
-            return false;
-        }
-        return false;
-    }
+//    public boolean cartaoVCPassaCompraEmMaisDeDoisMinutos(ArrayList<Transacao> listaParaMostrarOExtrato, InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo) {
+//        if (listaParaMostrarOExtrato.size() > 0) {
+//            if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VC") && segurancaComprasDeMenosDe120Segundos(listaParaMostrarOExtrato)) {
+//                System.out.printf("%n*** ERRO! ***" +
+//                        "%nEspere %d segundos para efetuar uma nova compra no Vale Combustível.", (120 - Math.abs(diferencaDeTempoEntreUltimaCompraEAgora(listaParaMostrarOExtrato))));
+//                return true;
+//            }
+//            return false;
+//        }
+//        return false;
+//    }
 
     public boolean cartaoEstaNaValidade(LocalDateTime validadeDoCartao) {
         if (validadeDoCartao.compareTo(LocalDateTime.now()) < 0) {

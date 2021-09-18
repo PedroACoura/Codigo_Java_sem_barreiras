@@ -11,7 +11,7 @@ public class Usuario {
     List<InterfaceCartaoDeBeneficiosAlelo> listaDeCartoes = new ArrayList<>();
     String nomeDoBeneficiario;
     Date dataNascimento;
-    String cpf;
+    Long cpf;
 
     public Usuario(String nomeDoBeneficiario) {
         this.nomeDoBeneficiario = nomeDoBeneficiario;
@@ -26,7 +26,7 @@ public class Usuario {
         dataBaseParaSelecionarUsuarios.add(usuarioNovo);
         return usuarioNovo;
     }
-    public Usuario (String nomeDoBeneficiario,String cpf, Date dataNascimento){
+    public Usuario (String nomeDoBeneficiario,Long cpf, Date dataNascimento){
         this.nomeDoBeneficiario = nomeDoBeneficiario;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
