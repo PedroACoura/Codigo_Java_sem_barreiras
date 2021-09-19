@@ -10,30 +10,28 @@ public class Usuario {
     public static final List<Usuario> dataBaseParaSelecionarUsuarios = new ArrayList<>();
     List<InterfaceCartaoDeBeneficiosAlelo> listaDeCartoes = new ArrayList<>();
     String nomeDoBeneficiario;
-    Date dataNascimento;
-   long cpf;
+    long cpf;
 
 
-    public Usuario(String nomeDoBeneficiario, Date dataNascimento, long cpf) {
+    public Usuario(String nomeDoBeneficiario, long cpf) {
         this.nomeDoBeneficiario = nomeDoBeneficiario;
-        this.dataNascimento = dataNascimento;
-        this.cpf=cpf;
+        this.cpf = cpf;
     }
 
     public Usuario(String nomeDoBeneficiario) {
         this.nomeDoBeneficiario = nomeDoBeneficiario;
     }
 
-    public Usuario (long cpf){
+    public Usuario(long cpf) {
         this.cpf = cpf;
     }
 
-    public static Usuario retornaUsuario(String nomeDoBeneficiario, Date datanascimento, long cpf){
-        var usuarioParaPesquisar= new Usuario(nomeDoBeneficiario,datanascimento,cpf);
-        if (dataBaseParaSelecionarUsuarios.contains(usuarioParaPesquisar)){
+    public static Usuario retornaUsuario(String nomeDoBeneficiario, long cpf) {
+        var usuarioParaPesquisar = new Usuario(nomeDoBeneficiario, cpf);
+        if (dataBaseParaSelecionarUsuarios.contains(usuarioParaPesquisar)) {
             return dataBaseParaSelecionarUsuarios.get(dataBaseParaSelecionarUsuarios.indexOf(usuarioParaPesquisar));
         }
-        var usuarioNovo = new Usuario(nomeDoBeneficiario,datanascimento,cpf);
+        var usuarioNovo = new Usuario(nomeDoBeneficiario, cpf);
         dataBaseParaSelecionarUsuarios.add(usuarioNovo);
         return usuarioNovo;
     }
@@ -44,9 +42,7 @@ public class Usuario {
         if (dataBaseParaSelecionarUsuarios.contains(usuarioParaPesquisar)) {
             return dataBaseParaSelecionarUsuarios.get(dataBaseParaSelecionarUsuarios.indexOf(usuarioParaPesquisar));
         }
-        var usuarioNovo = new Usuario(nomeDoBeneficiario);
-        dataBaseParaSelecionarUsuarios.add(usuarioNovo);
-        return usuarioNovo;
+        return usuarioParaPesquisar;
     }
 
 
@@ -55,6 +51,7 @@ public class Usuario {
             return;
         }
         System.out.println("O usuário está sendo cadastro no sistema Alelo. Favor aguardar uns instantes.");
+
         listaDeCartoes.add(TiposDeCartaoDeBeneficio.VA.fabricar());
         listaDeCartoes.add(TiposDeCartaoDeBeneficio.VR.fabricar());
         listaDeCartoes.add(TiposDeCartaoDeBeneficio.VC.fabricar());
@@ -70,6 +67,7 @@ public class Usuario {
     public static InterfaceCartaoDeBeneficiosAlelo retornarCartaoDeBeneficiosUtilizadoPeloUsuario(String nomeDoBeneficiario, Integer valeSelecionadoPeloUsuario) {
         return (retornaUsuarioPeloNomeDoBeneficiario(nomeDoBeneficiario).listaDeCartoes.get(valeSelecionadoPeloUsuario - 1));
     }
+
 
     @Override
     public boolean equals(Object o) {

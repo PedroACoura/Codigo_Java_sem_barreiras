@@ -2,7 +2,7 @@ package Versao3;
 
 import java.util.Locale;
 import java.util.Scanner;
-//import Formatação;
+
 
 public class LayoutDoPrograma {
 
@@ -20,12 +20,22 @@ public class LayoutDoPrograma {
     public void entradaDoPrograma() {
         Scanner input = new Scanner(System.in);
         while (programaInicial) {
+//            System.out.printf("%n============================== Seja bem vindo ao sistema de cartões de benefícios Alelo! =============================" +
+//                    "%nDigite seu nome: ");
+//            String nomeDoBeneficiario = input.nextLine();
+//            nomeDoBeneficiario = Character.toUpperCase(nomeDoBeneficiario.charAt(0)) + nomeDoBeneficiario.substring(1).toLowerCase(Locale.ROOT);
+//
+//            var usuario = Usuario.retornaUsuarioPeloNomeDoBeneficiario(nomeDoBeneficiario);
+//            usuario.criarCartoesParaUsuario();
+
             System.out.printf("%n============================== Seja bem vindo ao sistema de cartões de benefícios Alelo! =============================" +
                     "%nDigite seu nome: ");
             String nomeDoBeneficiario = input.nextLine();
             nomeDoBeneficiario = Character.toUpperCase(nomeDoBeneficiario.charAt(0)) + nomeDoBeneficiario.substring(1).toLowerCase(Locale.ROOT);
+            System.out.printf("%nDigite seu cpf somente o numero: ");
+            long cpf = input.nextLong();
 
-            var usuario = Usuario.retornaUsuarioPeloNomeDoBeneficiario(nomeDoBeneficiario);
+            var usuario = Usuario.retornaUsuario(nomeDoBeneficiario,cpf);
             usuario.criarCartoesParaUsuario();
 
             programaParaUsuarios = true;
@@ -49,7 +59,8 @@ public class LayoutDoPrograma {
                     programaParaUsuarios = false;
                     executarOMenuInicial = true;
                     usufruirDoPrograma(nomeDoBeneficiario);
-                } else if (tipoDeTransacao == 2) {
+                }
+                else if (tipoDeTransacao == 2) {
                     if (administrador.acessoAdministrador()) {
                         System.out.printf("%nOlá, Teste.Administrador" +
                                 "%nEscolha o cartao que você quer colocar saldo" +
@@ -88,7 +99,9 @@ public class LayoutDoPrograma {
                         abastecimentoDeCartao = false;
                     }
 
-                } else if (tipoDeTransacao == 3) {
+                }
+
+                else if (tipoDeTransacao == 3) {
                     System.out.printf("%nOk, %s." +
                             "%nEscolha o cartao que você deseja ver o saldo" +
                             "%n1 - Alelo Alimentação" +
@@ -112,20 +125,25 @@ public class LayoutDoPrograma {
                         cartaoDeBeneficiosAlelo.mostraSaldoDoCartao(nomeDoBeneficiario, 3);
                         cartaoDeBeneficiosAlelo.mostraSaldoDoCartao(nomeDoBeneficiario, 4);
                     }
-                } else if (tipoDeTransacao == 4) {
+                }
+
+                else if (tipoDeTransacao == 4) {
                     int i = 1;
                     System.out.printf("%n************************************************" +
                             "%nLista de usuários cadastrados no programa:%n");
                     for (Usuario usuario1 : Usuario.dataBaseParaSelecionarUsuarios) {
-                        System.out.printf("%d  - %s%n", i, usuario1.nomeDoBeneficiario);
+                        System.out.printf("%d  -nome do cliente %s cpf %d %n", i, usuario1.nomeDoBeneficiario, usuario1.cpf);
                         i += 1;
                     }
                     System.out.println("************************************************");
-                } else if (tipoDeTransacao == 5) {
+                }
+
+                else if (tipoDeTransacao == 5) {
                     programaParaUsuarios = false;
                     programaInicial = true;
                     nomeDoBeneficiario.replace("A-Za-z", input.nextLine());
-                } else if (tipoDeTransacao == 6) {
+                }
+                else if (tipoDeTransacao == 6) {
                     boolean encontrarNovoUsuario = true;
                     String armazenarNomeComoFoiDigitado = nomeDoBeneficiario;
                     while (encontrarNovoUsuario) {
@@ -147,7 +165,9 @@ public class LayoutDoPrograma {
                         }
                     }
 
-                } else if (tipoDeTransacao == 7) {
+                }
+
+                else if (tipoDeTransacao == 7) {
                     System.out.printf("%nEscolha o cartao que você deseja ver o extrato" +
                             "%n1 - Alelo Alimentação" +
                             "%n2 - Alelo Refeição" +
@@ -163,14 +183,20 @@ public class LayoutDoPrograma {
                             InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, i);
                             cartaoDeBeneficiosAlelo.mostrarExtratoDoCartao(nomeDoBeneficiario, i);
                         }
-                    } else if (opcaoDeExtrato >= 1 && opcaoDeExtrato <= 4) {
+                    }
+
+                    else if (opcaoDeExtrato >= 1 && opcaoDeExtrato <= 4) {
                         InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, opcaoDeExtrato);
                         cartaoDeBeneficiosAlelo.mostrarExtratoDoCartao(nomeDoBeneficiario, opcaoDeExtrato);
-                    } else {
+                    }
+
+                    else {
                         System.out.printf("%nOpção inválida.");
                     }
 
-                } else if (tipoDeTransacao == 9) {
+                }
+
+                else if (tipoDeTransacao == 9) {
                     input.close();
                     System.out.println("Obrigado por utilizar os cartões Alelo!");
                     executarOMenuInicial = false;
