@@ -2,6 +2,7 @@ package Versao3;
 
 import java.util.Locale;
 import java.util.Scanner;
+//import Formatação;
 
 public class LayoutDoPrograma {
 
@@ -14,6 +15,7 @@ public class LayoutDoPrograma {
     int valeSelecionadoPeloUsuario;
     int tipoDeTransacao;
     Integer opcaoDeExtrato;
+
 
     public void entradaDoPrograma() {
         Scanner input = new Scanner(System.in);

@@ -28,6 +28,16 @@ public class Usuario {
         this.cpf = cpf;
     }
 
+    public static Usuario retornaUsuario(String nomeDoBeneficiario, Date datanascimento, long cpf){
+        var usuarioParaPesquisar= new Usuario(nomeDoBeneficiario,datanascimento,cpf);
+        if (dataBaseParaSelecionarUsuarios.contains(usuarioParaPesquisar)){
+            return dataBaseParaSelecionarUsuarios.get(dataBaseParaSelecionarUsuarios.indexOf(usuarioParaPesquisar));
+        }
+        var usuarioNovo = new Usuario(nomeDoBeneficiario,datanascimento,cpf);
+        dataBaseParaSelecionarUsuarios.add(usuarioNovo);
+        return usuarioNovo;
+    }
+
 
     public static Usuario retornaUsuarioPeloNomeDoBeneficiario(String nomeDoBeneficiario) {
         var usuarioParaPesquisar = new Usuario(nomeDoBeneficiario);
