@@ -11,11 +11,23 @@ public class Usuario {
     List<InterfaceCartaoDeBeneficiosAlelo> listaDeCartoes = new ArrayList<>();
     String nomeDoBeneficiario;
     Date dataNascimento;
-    Long cpf;
+   long cpf;
+
+
+    public Usuario(String nomeDoBeneficiario, Date dataNascimento, long cpf) {
+        this.nomeDoBeneficiario = nomeDoBeneficiario;
+        this.dataNascimento = dataNascimento;
+        this.cpf=cpf;
+    }
 
     public Usuario(String nomeDoBeneficiario) {
         this.nomeDoBeneficiario = nomeDoBeneficiario;
     }
+
+    public Usuario (long cpf){
+        this.cpf = cpf;
+    }
+
 
     public static Usuario retornaUsuarioPeloNomeDoBeneficiario(String nomeDoBeneficiario) {
         var usuarioParaPesquisar = new Usuario(nomeDoBeneficiario);
@@ -26,12 +38,7 @@ public class Usuario {
         dataBaseParaSelecionarUsuarios.add(usuarioNovo);
         return usuarioNovo;
     }
-    public Usuario (String nomeDoBeneficiario,Long cpf, Date dataNascimento){
-        this.nomeDoBeneficiario = nomeDoBeneficiario;
-        this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
 
-    }
 
     public void criarCartoesParaUsuario() {
         if (this.listaDeCartoes.size() > 0) {
@@ -42,8 +49,8 @@ public class Usuario {
         listaDeCartoes.add(TiposDeCartaoDeBeneficio.VR.fabricar());
         listaDeCartoes.add(TiposDeCartaoDeBeneficio.VC.fabricar());
         listaDeCartoes.add(TiposDeCartaoDeBeneficio.VM.fabricar());
-        System.out.printf("%nCartão de Alelo Alimentação NewGen criado com sucesso..." +
-                "%nCartão de Alelo Refeição NewGen criado com sucesso..." +
+        System.out.printf("%nCartão de Alelo Alimentação da Alelo criado com sucesso..." +
+                "%nCartão de Alelo Refeição da Alelo criado com sucesso..." +
                 "%nCartão de Alelo Combustível da Alelo criado com sucesso..." +
                 "%nCartão de Alelo Multibenefícios da Alelo criado com sucesso..." +
                 "%nUsuário cadastrado com sucesso! Seja bem vindo!" +
