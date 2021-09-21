@@ -1,6 +1,6 @@
 package Versao3;
 
-public class AleloMobolidade extends CartaoDeBeneficiosAlelo implements InterfaceCartaoDeBeneficiosAlelo {
+public class AleloMobilidade extends CartaoDeBeneficiosAlelo implements InterfaceCartaoDeBeneficiosAlelo {
 
     private final Integer senhaDoCartaoVC = 3456;
     private Double saldoAtualDoCartao = 1000.00;

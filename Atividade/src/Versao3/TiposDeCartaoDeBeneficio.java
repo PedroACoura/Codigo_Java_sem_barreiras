@@ -16,7 +16,7 @@ public enum TiposDeCartaoDeBeneficio {
     VC {
         @Override
         public InterfaceCartaoDeBeneficiosAlelo fabricar() {
-            return new AleloMobolidade();
+            return new AleloMobilidade();
         }
     },
     VM {

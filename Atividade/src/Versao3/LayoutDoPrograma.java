@@ -80,6 +80,7 @@ public class LayoutDoPrograma {
                         "%n5 - Cadastrar novo usuário" +
                         "%n6 - Selecionar usuário cadastrado" +
                         "%n7 - Mostrar extrato" +
+                        "%n8 - Criar cartão para algum vale"+
                         "%n9 - Desligar o programa" +
                         "%nOpção escolhida: ", nomeDoBeneficiario);
                 tipoDeTransacao = input.nextInt();
@@ -208,6 +209,9 @@ public class LayoutDoPrograma {
                     } else {
                         System.out.printf("%nOpção inválida.");
                     }
+                } else if (tipoDeTransacao == 8) {
+                   usuario.criarCartoesParaUsuario();
+
 
                 } else if (tipoDeTransacao == 9) {
                     input.close();
