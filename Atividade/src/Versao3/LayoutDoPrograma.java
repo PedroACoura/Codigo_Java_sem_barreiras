@@ -15,27 +15,56 @@ public class LayoutDoPrograma {
     int valeSelecionadoPeloUsuario;
     int tipoDeTransacao;
     Integer opcaoDeExtrato;
+    String cpf,datadenascimento;
+
 
 
     public void entradaDoPrograma() {
         Scanner input = new Scanner(System.in);
         while (programaInicial) {
-//            System.out.printf("%n============================== Seja bem vindo ao sistema de cartões de benefícios Alelo! =============================" +
-//                    "%nDigite seu nome: ");
-//            String nomeDoBeneficiario = input.nextLine();
-//            nomeDoBeneficiario = Character.toUpperCase(nomeDoBeneficiario.charAt(0)) + nomeDoBeneficiario.substring(1).toLowerCase(Locale.ROOT);
-//
-//            var usuario = Usuario.retornaUsuarioPeloNomeDoBeneficiario(nomeDoBeneficiario);
-//            usuario.criarCartoesParaUsuario();
 
             System.out.printf("%n============================== Seja bem vindo ao sistema de cartões de benefícios Alelo! =============================" +
                     "%nDigite seu nome: ");
             String nomeDoBeneficiario = input.nextLine();
             nomeDoBeneficiario = Character.toUpperCase(nomeDoBeneficiario.charAt(0)) + nomeDoBeneficiario.substring(1).toLowerCase(Locale.ROOT);
-            System.out.printf("%nDigite seu cpf somente o numero: ");
-            long cpf = input.nextLong();
 
-            var usuario = Usuario.retornaUsuario(nomeDoBeneficiario,cpf);
+            //validador de cpf
+//            boolean validadorCPF = true;
+//            while (validadorCPF) {
+//                System.out.printf("%nDigite seu cpf somente o numero: ");
+//                 cpf = input.next();
+//                if (cpf.length() !=11){
+//                    System.out.printf("%n*** ERRO ***" +
+//                            "%nO CPF digitado é inválido, por favor tente novamente.");
+//                }
+//                else{
+//                    validadorCPF=false;
+//                }
+//
+//            }
+
+            System.out.printf("%nDigite seu cpf somente o numero: ");
+            String cpf = input.next();
+
+            //validador de datanascimento
+//            boolean validadorData = true;
+//            while (validadorData) {
+//                System.out.printf("%nDigite seu datanascimento somente o numero: ");
+//                datadenascimento = input.next();
+//                if (datadenascimento.length() !=10){
+//                    System.out.printf("%n*** ERRO ***" +
+//                            "%nA datanascimento digitado é inválida, por favor tente novamente segunindo o modeleo xx/xx/xxxx.");
+//                }
+//                else{
+//                    validadorData=false;
+//                }
+//
+//            }
+
+            System.out.printf("%nDigite sua data de nascimento : ");
+            String datadenascimento = input.next();
+
+            var usuario = Usuario.retornaUsuario(nomeDoBeneficiario, cpf, datadenascimento);
             usuario.criarCartoesParaUsuario();
 
             programaParaUsuarios = true;
@@ -59,14 +88,13 @@ public class LayoutDoPrograma {
                     programaParaUsuarios = false;
                     executarOMenuInicial = true;
                     usufruirDoPrograma(nomeDoBeneficiario);
-                }
-                else if (tipoDeTransacao == 2) {
+                } else if (tipoDeTransacao == 2) {
                     if (administrador.acessoAdministrador()) {
                         System.out.printf("%nOlá, Teste.Administrador" +
                                 "%nEscolha o cartao que você quer colocar saldo" +
                                 "%n1 - Alelo Alimentação" +
                                 "%n2 - Alelo Refeição" +
-                                "%n3 - Alelo Combustível" +
+                                "%n3 - Alelo Mobilidade" +
                                 "%n4 - Alelo Multibeneficios" +
                                 "%n0 - Voltar para o menu anterior" +
                                 "%nOpção escolhida: ");
@@ -99,14 +127,12 @@ public class LayoutDoPrograma {
                         abastecimentoDeCartao = false;
                     }
 
-                }
-
-                else if (tipoDeTransacao == 3) {
+                } else if (tipoDeTransacao == 3) {
                     System.out.printf("%nOk, %s." +
                             "%nEscolha o cartao que você deseja ver o saldo" +
                             "%n1 - Alelo Alimentação" +
                             "%n2 - Alelo Refeição" +
-                            "%n3 - Alelo Combustível" +
+                            "%n3 - Alelo Mobilidade" +
                             "%n4 - Alelo Multibeneficios" +
                             "%n5 - Todos os cartões" +
                             "%n0 - Voltar para o menu anterior" +
@@ -125,25 +151,20 @@ public class LayoutDoPrograma {
                         cartaoDeBeneficiosAlelo.mostraSaldoDoCartao(nomeDoBeneficiario, 3);
                         cartaoDeBeneficiosAlelo.mostraSaldoDoCartao(nomeDoBeneficiario, 4);
                     }
-                }
-
-                else if (tipoDeTransacao == 4) {
+                } else if (tipoDeTransacao == 4) {
                     int i = 1;
                     System.out.printf("%n************************************************" +
                             "%nLista de usuários cadastrados no programa:%n");
                     for (Usuario usuario1 : Usuario.dataBaseParaSelecionarUsuarios) {
-                        System.out.printf("%d  -nome do cliente %s cpf %d %n", i, usuario1.nomeDoBeneficiario, usuario1.cpf);
+                        System.out.printf("%d  - nome do cliente %s - cpf %s  - data de nascimento %s %n", i, usuario1.nomeDoBeneficiario, usuario1.cpf, usuario1.datadenascimento);
                         i += 1;
                     }
                     System.out.println("************************************************");
-                }
-
-                else if (tipoDeTransacao == 5) {
+                } else if (tipoDeTransacao == 5) {
                     programaParaUsuarios = false;
                     programaInicial = true;
                     nomeDoBeneficiario.replace("A-Za-z", input.nextLine());
-                }
-                else if (tipoDeTransacao == 6) {
+                } else if (tipoDeTransacao == 6) {
                     boolean encontrarNovoUsuario = true;
                     String armazenarNomeComoFoiDigitado = nomeDoBeneficiario;
                     while (encontrarNovoUsuario) {
@@ -165,13 +186,11 @@ public class LayoutDoPrograma {
                         }
                     }
 
-                }
-
-                else if (tipoDeTransacao == 7) {
+                } else if (tipoDeTransacao == 7) {
                     System.out.printf("%nEscolha o cartao que você deseja ver o extrato" +
                             "%n1 - Alelo Alimentação" +
                             "%n2 - Alelo Refeição" +
-                            "%n3 - Alelo Combustível" +
+                            "%n3 - Alelo Mobilidade" +
                             "%n4 - Alelo  Multibeneficios" +
                             "%n4 - Todos os cartões" +
                             "%n0 - Voltar para o menu anterior" +
@@ -183,20 +202,14 @@ public class LayoutDoPrograma {
                             InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, i);
                             cartaoDeBeneficiosAlelo.mostrarExtratoDoCartao(nomeDoBeneficiario, i);
                         }
-                    }
-
-                    else if (opcaoDeExtrato >= 1 && opcaoDeExtrato <= 4) {
+                    } else if (opcaoDeExtrato >= 1 && opcaoDeExtrato <= 4) {
                         InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo = Usuario.retornarCartaoDeBeneficiosUtilizadoPeloUsuario(nomeDoBeneficiario, opcaoDeExtrato);
                         cartaoDeBeneficiosAlelo.mostrarExtratoDoCartao(nomeDoBeneficiario, opcaoDeExtrato);
-                    }
-
-                    else {
+                    } else {
                         System.out.printf("%nOpção inválida.");
                     }
 
-                }
-
-                else if (tipoDeTransacao == 9) {
+                } else if (tipoDeTransacao == 9) {
                     input.close();
                     System.out.println("Obrigado por utilizar os cartões Alelo!");
                     executarOMenuInicial = false;
@@ -220,7 +233,7 @@ public class LayoutDoPrograma {
                     "%nEscolha qual cartão você quer utilizar:" +
                     "%n1 - Alelo Alimentação" +
                     "%n2 - Alelo Refeição" +
-                    "%n3 - Alelo Combustível" +
+                    "%n3 - Alelo Mobilidade" +
                     "%n4 - Alelo Multibenefícios" +
                     "%n9 - Desligar programa" +
                     "%n0 - Retornar ao menu anterior" +

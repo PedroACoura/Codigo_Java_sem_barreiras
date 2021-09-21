@@ -2,8 +2,9 @@ package Versao3;
 
 public class AleloMobolidade extends CartaoDeBeneficiosAlelo implements InterfaceCartaoDeBeneficiosAlelo {
 
-    private final Integer senhaDoCartaoVC = 2345;
+    private final Integer senhaDoCartaoVC = 3456;
     private Double saldoAtualDoCartao = 1000.00;
+    private final Integer codigoDoCartaoVC = 345;
 
     @Override
     public void adicionarNovaTransacao(Double valorASerGastoPeloUsuario, String nomeDoBeneficiario,
@@ -13,6 +14,10 @@ public class AleloMobolidade extends CartaoDeBeneficiosAlelo implements Interfac
 
     public Boolean senhaDoCartao(Integer senhaDoCartaoVC) {
         return senhaDoCartaoVC.equals(this.senhaDoCartaoVC);
+    }
+    public Boolean codigoDoCartao(Integer codigoDoCartaoVC) {
+
+        return codigoDoCartaoVC.equals(this.codigoDoCartaoVC);
     }
 
 

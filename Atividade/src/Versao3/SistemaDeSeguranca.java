@@ -29,7 +29,7 @@ public class SistemaDeSeguranca {
     public boolean cartaoVREstaSendoUtilizadoEmRestourante(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo, String estabelecimentoUtilizadoPeloPrograma) {
         if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VR") && !estabelecimentoUtilizadoPeloPrograma.equals("RESTOURANTE")) {
             System.out.printf("%n*** ERRO! ***" +
-                    "%nO Alelo Alimentação pode ser utilizado somente em mercado.");
+                    "%nO Alelo Alimentação pode ser utilizado somente em restourante.");
             return true;
         }
         return false;
@@ -39,7 +39,7 @@ public class SistemaDeSeguranca {
     public boolean cartaoVMEstaSendoUtilizadoEmFarmacia(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo, String estabelecimentoUtilizadoPeloPrograma) {
         if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VM") && !estabelecimentoUtilizadoPeloPrograma.equals("FARMACIA")) {
             System.out.printf("%n*** ERRO ***" +
-                    "%nO cartão de combustível pode ser utilizado somente em posto de combustível.");
+                    "%nO cartão de combustível pode ser utilizado somente em posto de farmacia.");
             return true;
         }
         return false;
@@ -50,6 +50,19 @@ public class SistemaDeSeguranca {
         System.out.print("Digite a senha do cartão: ");
         Integer senhaDoCartaoDigitaPeloUsuario = escanearSenha.nextInt();
         if (cartaoDeBeneficiosAlelo.senhaDoCartao(senhaDoCartaoDigitaPeloUsuario)) {
+            return true;
+        } else {
+            System.out.printf("%n*** ERRO! ***" +
+                    "%nA senha digitada está incorreta.");
+            return false;
+        }
+
+    }
+    public boolean codigoDoCartaoDoCartaoEstaCorreta(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo) {
+        Scanner escanearCodigo = new Scanner(System.in);
+        System.out.print("Digite o codigo do cartão: ");
+        Integer codigoDoCartaoDigitaPeloUsuario = escanearCodigo.nextInt();
+        if (cartaoDeBeneficiosAlelo.codigoDoCartao(codigoDoCartaoDigitaPeloUsuario)) {
             return true;
         } else {
             System.out.printf("%n*** ERRO! ***" +
@@ -109,7 +122,7 @@ public class SistemaDeSeguranca {
 
     public boolean sistemaAntiFraude1(ArrayList<Transacao> listaParaMostrarOExtrato, String nomeDoEstabelecimento, Double valorASerGastoPeloUsuario) {
         if (segurancaComprasDeMenosDe10Segundos(listaParaMostrarOExtrato) &&
-                //compraNoMesmoEstabelecimento(listaParaMostrarOExtrato, nomeDoEstabelecimento) &&
+                compraNoMesmoEstabelecimento(listaParaMostrarOExtrato, nomeDoEstabelecimento) &&
                 noMesmoValor(listaParaMostrarOExtrato, valorASerGastoPeloUsuario) ) {
             System.out.printf("%n*** ERRO! ***" +
                     "%nTransação não realizada. Espere %d segundos para efetuar esta compra.", (10 - diferencaDeTempoEntreUltimaCompraEAgora(listaParaMostrarOExtrato)));
@@ -132,21 +145,6 @@ public class SistemaDeSeguranca {
         return false;
     }
 
-//    public boolean segurancaComprasDeMenosDe120Segundos(ArrayList<Transacao> listaParaMostrarOExtrato) {
-//        return diferencaDeTempoEntreUltimaCompraEAgora(listaParaMostrarOExtrato) < 120;
-//    }
-
-//    public boolean cartaoVCPassaCompraEmMaisDeDoisMinutos(ArrayList<Transacao> listaParaMostrarOExtrato, InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo) {
-//        if (listaParaMostrarOExtrato.size() > 0) {
-//            if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VC") && segurancaComprasDeMenosDe120Segundos(listaParaMostrarOExtrato)) {
-//                System.out.printf("%n*** ERRO! ***" +
-//                        "%nEspere %d segundos para efetuar uma nova compra no Vale Combustível.", (120 - Math.abs(diferencaDeTempoEntreUltimaCompraEAgora(listaParaMostrarOExtrato))));
-//                return true;
-//            }
-//            return false;
-//        }
-//        return false;
-//    }
 
     public boolean cartaoEstaNaValidade(LocalDateTime validadeDoCartao) {
         if (validadeDoCartao.compareTo(LocalDateTime.now()) < 0) {
@@ -157,14 +155,7 @@ public class SistemaDeSeguranca {
         return false;
     }
 
-//    public boolean valorMaiorQue299(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo, Double valorASerGastoPeloUsuario) {
-//        if (valorASerGastoPeloUsuario > cartaoDeBeneficiosAlelo.saldoAtualDoCartao()) {
-//            System.out.printf("%n*** ERRO! ***" +
-//                    "%nO valor da compra é maior que o disponível em saldo. Procedimento não realizado.");
-//            return true;
-//        }
-//        return false;
-//    }
+
 
     public static boolean limiteDoCartaoAleloRefeicao(InterfaceCartaoDeBeneficiosAlelo cartaoDeBeneficiosAlelo, Double valorASerGastoPeloUsuario) {
         if (cartaoDeBeneficiosAlelo.nomeDoCartao().equals("VR") && valorASerGastoPeloUsuario > 299) {

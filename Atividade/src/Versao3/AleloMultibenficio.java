@@ -3,8 +3,9 @@ package Versao3;
 public class AleloMultibenficio extends CartaoDeBeneficiosAlelo implements InterfaceCartaoDeBeneficiosAlelo {
 
 
-    private final Integer senhaDoCartaoVM = 3456;
+    private final Integer senhaDoCartaoVM = 4567;
     private Double saldoAtualDoCartao = 1000.00;
+    private final Integer codigoDoCartaoVM = 456;
 
     @Override
     public void adicionarNovaTransacao(Double valorASerGastoPeloUsuario, String nomeDoBeneficiario,
@@ -12,8 +13,13 @@ public class AleloMultibenficio extends CartaoDeBeneficiosAlelo implements Inter
         super.adicionarNovaTransacao(valorASerGastoPeloUsuario, nomeDoBeneficiario, valeSelecionadoPeloUsuario, estabelecimentoUtilizadoPeloPrograma);
     }
 
-    public Boolean senhaDoCartao(Integer senhaDoCartaoVA) {
-        return senhaDoCartaoVA.equals(this.senhaDoCartaoVM);
+    public Boolean senhaDoCartao(Integer senhaDoCartaoVM) {
+        return senhaDoCartaoVM.equals(this.senhaDoCartaoVM);
+    }
+
+    public Boolean codigoDoCartao(Integer codigoDoCartaoVM) {
+
+        return codigoDoCartaoVM.equals(this.codigoDoCartaoVM);
     }
 
     public String nomeDoCartao() {

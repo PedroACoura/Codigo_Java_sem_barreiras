@@ -2,10 +2,12 @@ package Versao3;
 
 public interface InterfaceCartaoDeBeneficiosAlelo {
 
-    void adicionarNovaTransacao(Double valorASerGastoPeloUsuario, String nomeDoBeneficiario,
+    void adicionarNovaTransacao(Double valorASerGastoPeloUsuario,/*Double cashback,*/ String nomeDoBeneficiario,
                                 Integer valeSelecionadoPeloUsuario, Estabelecimento estabelecimentoUtilizadoPeloPrograma);
 
     Boolean senhaDoCartao(Integer senhaDoCartao);
+
+    Boolean codigoDoCartao(Integer codigoDoCartao);
 
     String nomeDoCartao();
 

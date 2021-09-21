@@ -4,6 +4,7 @@ public class AleloAlimentacao extends CartaoDeBeneficiosAlelo implements Interfa
 
     private final Integer senhaDoCartaoVA = 1234;
     private Double saldoAtualDoCartao = 1000.00;
+    private final Integer codigoDoCartaoVA =123;
 
     @Override
     public void adicionarNovaTransacao(Double valorASerGastoPeloUsuario, String nomeDoBeneficiario,
@@ -12,10 +13,17 @@ public class AleloAlimentacao extends CartaoDeBeneficiosAlelo implements Interfa
     }
 
     public Boolean senhaDoCartao(Integer senhaDoCartaoVA) {
+
         return senhaDoCartaoVA.equals(this.senhaDoCartaoVA);
     }
 
+    public Boolean codigoDoCartao(Integer codigoDoCartaoVA) {
+
+        return codigoDoCartaoVA.equals(this.codigoDoCartaoVA);
+    }
+
     public String nomeDoCartao() {
+
         return "VA";
     }
 
@@ -25,7 +33,8 @@ public class AleloAlimentacao extends CartaoDeBeneficiosAlelo implements Interfa
     }
 
 
-    public Double saldoAtualDoCartao() {
+    public Double saldoAtualDoCartao()
+    {
         return saldoAtualDoCartao;
     }
 

@@ -10,28 +10,30 @@ public class Usuario {
     public static final List<Usuario> dataBaseParaSelecionarUsuarios = new ArrayList<>();
     List<InterfaceCartaoDeBeneficiosAlelo> listaDeCartoes = new ArrayList<>();
     String nomeDoBeneficiario;
-    long cpf;
+    String datadenascimento;
+    String cpf;
 
 
-    public Usuario(String nomeDoBeneficiario, long cpf) {
+    public Usuario(String nomeDoBeneficiario, String cpf, String datadenascimento) {
         this.nomeDoBeneficiario = nomeDoBeneficiario;
         this.cpf = cpf;
+        this.datadenascimento = datadenascimento;
     }
 
     public Usuario(String nomeDoBeneficiario) {
         this.nomeDoBeneficiario = nomeDoBeneficiario;
     }
 
-    public Usuario(long cpf) {
-        this.cpf = cpf;
-    }
+//    public Usuario(long cpf) {
+//        this.cpf = cpf;
+//    }
 
-    public static Usuario retornaUsuario(String nomeDoBeneficiario, long cpf) {
-        var usuarioParaPesquisar = new Usuario(nomeDoBeneficiario, cpf);
+    public static Usuario retornaUsuario(String nomeDoBeneficiario, String cpf, String datadenascimento) {
+        var usuarioParaPesquisar = new Usuario(nomeDoBeneficiario, cpf,datadenascimento);
         if (dataBaseParaSelecionarUsuarios.contains(usuarioParaPesquisar)) {
             return dataBaseParaSelecionarUsuarios.get(dataBaseParaSelecionarUsuarios.indexOf(usuarioParaPesquisar));
         }
-        var usuarioNovo = new Usuario(nomeDoBeneficiario, cpf);
+        var usuarioNovo = new Usuario(nomeDoBeneficiario, cpf,datadenascimento);
         dataBaseParaSelecionarUsuarios.add(usuarioNovo);
         return usuarioNovo;
     }
@@ -58,7 +60,7 @@ public class Usuario {
         listaDeCartoes.add(TiposDeCartaoDeBeneficio.VM.fabricar());
         System.out.printf("%nCartão de Alelo Alimentação da Alelo criado com sucesso..." +
                 "%nCartão de Alelo Refeição da Alelo criado com sucesso..." +
-                "%nCartão de Alelo Combustível da Alelo criado com sucesso..." +
+                "%nCartão de Alelo Mobilidade da Alelo criado com sucesso..." +
                 "%nCartão de Alelo Multibenefícios da Alelo criado com sucesso..." +
                 "%nUsuário cadastrado com sucesso! Seja bem vindo!" +
                 "%nTodos os cartões contam a cortesia de serem iniciados com R$ 1000,00. Aproveite!");
