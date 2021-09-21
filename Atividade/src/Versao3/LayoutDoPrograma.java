@@ -157,7 +157,7 @@ public class LayoutDoPrograma {
                     System.out.printf("%n************************************************" +
                             "%nLista de usuários cadastrados no programa:%n");
                     for (Usuario usuario1 : Usuario.dataBaseParaSelecionarUsuarios) {
-                        System.out.printf("%d  - nome do cliente %s - cpf %d  - data de nascimento %s %n", i, usuario1.nomeDoBeneficiario, usuario1.cpf, usuario1.datadenascimento);
+                        System.out.printf("%d  - nome do cliente %s - cpf %s  - data de nascimento %s %n", i, usuario1.nomeDoBeneficiario, usuario1.cpf, usuario1.datadenascimento);
                         i += 1;
                     }
                     System.out.println("************************************************");
@@ -223,7 +223,8 @@ public class LayoutDoPrograma {
             }
         }
     }
-
+//----------------------------------------------------------------------------------------------------------------------
+//
 
     public void usufruirDoPrograma(String nomeDoBeneficiario) {
         Scanner input = new Scanner(System.in);
