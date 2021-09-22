@@ -214,27 +214,29 @@ public class LayoutDoPrograma {
                     usuario.criarCartoesParaUsuario();
 
 
+//                } else if (tipoDeTransacao == 9) {
+//                    if (Estabelecimentos.estabelecimentos.size() == 0) {
+//                        estabelecimentos.criarEstabelecimentosDisponiveisParaGastar();
+//                    }
+//
+//                    System.out.printf("%n************************************************" +
+//                            "%nLista de usuários cadastrados no programa:%n");
+//                    for (int i = 0; i < Estabelecimentos.estabelecimentos.size(); i++) {
+//                        System.out.printf("%d - %s%n", (Estabelecimentos.estabelecimentos.get(i).identificadorDoEstabelecimento()), Estabelecimentos.estabelecimentos.get(i).razaoSocial);
+//                    }
+
+
                 } else if (tipoDeTransacao == 9) {
                     if (Estabelecimentos.estabelecimentos.size() == 0) {
                         estabelecimentos.criarEstabelecimentosDisponiveisParaGastar();
                     }
 
                     System.out.printf("%n************************************************" +
-                            "%nLista de usuários cadastrados no programa:%n");
+                            "%nLista de estabelecimentos cadastrados no programa:%n");
                     for (int i = 0; i < Estabelecimentos.estabelecimentos.size(); i++) {
-                        System.out.printf("%d - %s%n", (Estabelecimentos.estabelecimentos.get(i).identificadorDoEstabelecimento()), Estabelecimentos.estabelecimentos.get(i).razaoSocial);
-                    }
-
-
-                } else if (tipoDeTransacao == 9) {
-                    if (Estabelecimentos.estabelecimentos.size() == 0) {
-                        estabelecimentos.criarEstabelecimentosDisponiveisParaGastar();
-                    }
-
-                    System.out.printf("%n************************************************" +
-                            "%nLista de usuários cadastrados no programa:%n");
-                    for (int i = 0; i < Estabelecimentos.estabelecimentos.size(); i++) {
-                        System.out.printf("%d - %s%n", (Estabelecimentos.estabelecimentos.get(i).identificadorDoEstabelecimento()), Estabelecimentos.estabelecimentos.get(i).razaoSocial);
+                        System.out.printf("%d - %s - %s -%s %n", (Estabelecimentos.estabelecimentos.get(i).identificadorDoEstabelecimento()),
+                                Estabelecimentos.estabelecimentos.get(i).razaoSocial,Estabelecimentos.estabelecimentos.get(i).cnpjDoEstabelecimento(),
+                                Estabelecimentos.estabelecimentos.get(i).estadosUF);
                     }
 
 
