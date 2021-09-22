@@ -15,8 +15,7 @@ public class LayoutDoPrograma {
     int valeSelecionadoPeloUsuario;
     int tipoDeTransacao;
     Integer opcaoDeExtrato;
-    String cpf,datadenascimento;
-
+    String cpf, datadenascimento;
 
 
     public void entradaDoPrograma() {
@@ -31,11 +30,11 @@ public class LayoutDoPrograma {
             //validador de cpf
 //            boolean validadorCPF = true;
 //            while (validadorCPF) {
-//                System.out.printf("%nDigite seu cpf somente o numero: ");
+//                System.out.printf("%nDigite seu cpf : ");
 //                 cpf = input.next();
 //                if (cpf.length() !=11){
 //                    System.out.printf("%n*** ERRO ***" +
-//                            "%nO CPF digitado é inválido, por favor tente novamente.");
+//                            "%nO CPF digitado é inválido, por favor tente novamente segunindo o modeleo xx/xx/xxxx..");
 //                }
 //                else{
 //                    validadorCPF=false;
@@ -80,10 +79,12 @@ public class LayoutDoPrograma {
                         "%n5 - Cadastrar novo usuário" +
                         "%n6 - Selecionar usuário cadastrado" +
                         "%n7 - Mostrar extrato" +
-                        "%n8 - Criar cartão para algum vale"+
-                        "%n9 - Desligar o programa" +
+                        "%n8 - Criar cartão para algum vale" +
+                        "%n9 - Mostra estabelecimento" +
+                        "%n0 - Desligar o programa" +
                         "%nOpção escolhida: ", nomeDoBeneficiario);
                 tipoDeTransacao = input.nextInt();
+
 
                 if (tipoDeTransacao == 1) {
                     programaParaUsuarios = false;
@@ -210,10 +211,34 @@ public class LayoutDoPrograma {
                         System.out.printf("%nOpção inválida.");
                     }
                 } else if (tipoDeTransacao == 8) {
-                   usuario.criarCartoesParaUsuario();
+                    usuario.criarCartoesParaUsuario();
 
 
                 } else if (tipoDeTransacao == 9) {
+                    if (Estabelecimentos.estabelecimentos.size() == 0) {
+                        estabelecimentos.criarEstabelecimentosDisponiveisParaGastar();
+                    }
+
+                    System.out.printf("%n************************************************" +
+                            "%nLista de usuários cadastrados no programa:%n");
+                    for (int i = 0; i < Estabelecimentos.estabelecimentos.size(); i++) {
+                        System.out.printf("%d - %s%n", (Estabelecimentos.estabelecimentos.get(i).identificadorDoEstabelecimento()), Estabelecimentos.estabelecimentos.get(i).razaoSocial);
+                    }
+
+
+                } else if (tipoDeTransacao == 9) {
+                    if (Estabelecimentos.estabelecimentos.size() == 0) {
+                        estabelecimentos.criarEstabelecimentosDisponiveisParaGastar();
+                    }
+
+                    System.out.printf("%n************************************************" +
+                            "%nLista de usuários cadastrados no programa:%n");
+                    for (int i = 0; i < Estabelecimentos.estabelecimentos.size(); i++) {
+                        System.out.printf("%d - %s%n", (Estabelecimentos.estabelecimentos.get(i).identificadorDoEstabelecimento()), Estabelecimentos.estabelecimentos.get(i).razaoSocial);
+                    }
+
+
+                } else if (tipoDeTransacao == 0) {
                     input.close();
                     System.out.println("Obrigado por utilizar os cartões Alelo!");
                     executarOMenuInicial = false;
@@ -222,6 +247,7 @@ public class LayoutDoPrograma {
                 }
             }
         }
+
     }
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -273,7 +299,7 @@ public class LayoutDoPrograma {
                             "%nCódigo de estabelecimento inválido. ");
                 }
 
-            } else if (valeSelecionadoPeloUsuario == 9) {
+            } else if (valeSelecionadoPeloUsuario == 0) {
                 input.close();
                 System.out.println("Obrigado por utilizar os cartões Alelo!");
                 executarOMenuInicial = false;

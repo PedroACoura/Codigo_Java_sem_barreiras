@@ -57,7 +57,7 @@ public class Usuario {
                     "%n2 - Alelo Refeição" +
                     "%n3 - Alelo Mobilidade" +
                     "%n4 - Alelo Multibenefícios" +
-                    "%n9 - Para voltar ao menu principal" +
+                    "%n0 - Para voltar ao menu principal" +
                     "%nOpção ->");
             int opçãoDigitada = teclado.nextInt();
             System.out.println("O usuário está sendo cadastro no sistema Alelo. Favor aguardar uns instantes.");
@@ -135,7 +135,7 @@ public class Usuario {
                 }
             }
 
-            if (opçãoDigitada == 9) {
+            if (opçãoDigitada == 0) {
                 criacaoDeCartao = false;
             }
         }
